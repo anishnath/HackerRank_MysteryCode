@@ -1,7 +1,7 @@
 HackerRank_MysteryCode
 ======================
 
-HackerRank_MysteryCode Example
+HackerRank MysteryCode Example
 
 You have been invited to attend the challenge Mystery codes.
 
