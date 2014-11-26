@@ -1,11 +1,14 @@
 package mysterycode;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * http://youtube.com/zarigatongy
- * HackerRank
+ * http://youtube.com/zarigatongy HackerRank
+ * 
  * @author Anish Nath
  * 
  */
@@ -13,25 +16,36 @@ public class MysteryCode {
 
 	public static void main(String[] args) {
 		int nBit = 3;
-
-		if (args != null && args.length > 0) {
-			try {
-				nBit = Integer.valueOf(args[0]);
-			} catch (NumberFormatException e) {
-				System.out.println("Error in Input Valid  Range is 1<=N<=65 ");
-				System.exit(0);
-			}
+		InputStreamReader read = new InputStreamReader(System.in);
+		BufferedReader in = new BufferedReader(read);
+		try {
+			nBit = Integer.parseInt(in.readLine());
+		} catch (NumberFormatException e) {
+			System.err.println("Input Must be Valid Integer"); 
+			return;
+		} catch (IOException e) {
+			System.err.println("Input Must be Valid Integer"); 
+			return;
 		}
+
 		if (nBit > 65 || nBit <= 0) {
 			System.out.println("Valid  Range is 1<=N<=65");
-			System.exit(0);
+			return;
+		}
+		
+		if(nBit ==1)
+		{
+			System.out.println(1);
+			return;		
 		}
 
 		List<Integer> result = mysteryCode(nBit);
+		List<Integer> subList = result.subList(result.size()-nBit, result.size());
 
-		for (int i : result) {
-			System.out.print(appendZero(nBit, Integer.toBinaryString(i)) + " ");
+		for (int i : subList) {
+			System.out.println(appendZero(nBit, Integer.toBinaryString(i)) + " ");
 		}
+		System.out.println("");
 	}
 
 	/**
